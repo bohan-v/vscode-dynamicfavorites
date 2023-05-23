@@ -1,0 +1,75 @@
+{
+  "name": "dynamicfavorites",
+  "displayName": "Dynamic Favorites",
+  "description": "Show favorites files with custom patterns base on custom root directory patterns",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dynamicfavorites.tree",
+          "name": "Dynamic Favorites"
+        }
+      ]
+    },
+    "commands": [],
+    "configuration": {
+      "title": "Dynamic Favorites",
+      "properties": {
+        "dynamicfavorites.customRootDirPatterns": {
+          "type": "array",
+          "description": "A custom root directory is for searching favorite files. Define custom root directory patterns. Everytime you open a file in editor it will try to find the root directory based on patterns.",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "scope": "window"
+        },
+        "dynamicfavorites.patterns": {
+          "type": "array",
+          "description": "This is an example entry. {\"sectionLabel\": \"Graphql\", \"pattern\": \"**/*.graphql\", \"iconName\": \"cloud\"}",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/sinon": "^10.0.15",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "ajv": "^8.12.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "sinon": "^15.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
